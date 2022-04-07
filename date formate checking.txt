@@ -1,0 +1,26 @@
+package com.userrole.constants;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateChecking {
+	
+public  boolean dateValidate(String inputDate) {		
+        try {
+        	
+            String[] datePattern = {"yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd "};
+            for (String pattern : datePattern) {
+                SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+                Date date = sdf.parse(inputDate);
+                String formattedDate = sdf.format(date);
+                if (inputDate.equals(formattedDate)) {
+                    return true;
+                }
+            }
+        } catch (ParseException ex) {
+            return false;
+        }
+        return false;	
+    }
+
+}
